@@ -219,7 +219,7 @@ describe ApplicationController do
       it 'displays a single loan' do
 
         user = User.create(:username => "becky567", :password => "kittens")
-        loan = Loan.create(:loan_face_value => 2000, :loan_term => 36, :annual_rate => 12, :lender => "TestBank3", :user_id => user.id)
+        loan = Loan.create(:loan_face_value => 2000, :loan_term => 36, :annual_rate => 12, :lender => "TestBank3", :user_id => user.id, :total_amount => 2391.43)
 
 
         visit '/login'
@@ -230,7 +230,6 @@ describe ApplicationController do
 
         visit "/loans/#{loan.id}"
         expect(page.status_code).to eq(200)
-        expect(page.body).to include("Delete")
         expect(page.body).to include(loan.lender)
         expect(page.body).to include("edit")
       end
@@ -292,6 +291,7 @@ describe ApplicationController do
         click_button 'submit'
 
         expect(Loan.find_by(:lender => "Lender Changed")).to be_instance_of(Loan)
+
         expect(Loan.find_by(:lender =>"TestBank6")).to eq(nil)
         expect(page.status_code).to eq(200)
       end

@@ -25,13 +25,13 @@
         <td><%= @loan.loan_face_value %></td>
         <td><%= @loan.annual_rate %></td>
         <td><%= @loan.loan_term %></td>
-        <td><%= @loan.monthly_payment %></td>
-        <td><%= @loan.total_amount %></td>
+        <td><%= @loan.monthly_payment.round(2) %></td>
+        <td><%= @loan.total_amount.round(2) %></td>
         <td><%=@loan.updated_at.strftime(" %b %e %Y")%></td>
         <td><a href="/loans/<%=@loan.id%>/edit">edit</a></td>
         <td><form method="post" action="/loans/<%=@loan.id%>/delete">
           <input id="hidden" type="hidden" name="_method" value="DELETE">
-          <input type="submit" value="Delete Loan">
+          <input id = "Delete Loan" type="submit" value="Delete Loan">
         </form></td>
       </tr>
     </tbody>
