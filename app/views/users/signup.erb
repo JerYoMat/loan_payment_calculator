@@ -1,7 +1,13 @@
 <h1>Please sign up to access the site</h1>
 
+
+
 <form action="/signup" method="POST">
   <p>Name: <input type="text" name="username"></p>
   <p>Password: <input type="text" name="password"></p>
   <input class="btn btn-primary" type="submit" id='submit'>
 </form>
+
+<% if flash[:required_blank] %>
+   <%= flash[:required_blank] %>
+<% end %>
