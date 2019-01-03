@@ -1,18 +1,26 @@
 
-<h2>Welcome to PaymentCalc</h2>
+
 
 
 <nav>
   <% if logged_in? %>
-
+<h2>Welcome to PaymentCalc</h2>
     <a href="/loans/new"> Add new loan to comparison </a>
     <a href="/logout"> Log Out </a>
     <p>Welcome, <%=current_user.username %></p>
 
   <% else %>
-    <p>Please sign in or sign up below:</p>
-    <a href="/signup">Sign Up</a>
-    <a href="/login"> Sign In </a>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+
+    <li><a href="/signup">Sign Up</a></li>
+    <li><a href="/login"> Sign In </a></li>
+
+      </ul>
+    </div>
+  </nav>
+  <h2>Welcome to PaymentCalc</h2>
   <%end %>
 
 </nav>
