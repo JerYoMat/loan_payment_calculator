@@ -12,7 +12,7 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem "tux"
-
+gem 'saas'
 
 
 group :test do
