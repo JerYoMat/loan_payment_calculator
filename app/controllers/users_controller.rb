@@ -33,9 +33,10 @@ class UsersController < ApplicationController
 
   post '/signup' do
     if params[:username] == "" || params[:password] == ""
-        flash[:required_blank] = "Both username and password are required values."
+       flash[:required_blank] = "Please enter both a username and password."
        redirect to '/signup'
     elsif User.find_by(:username => params[:username])
+        flash[:username_taken] = "Sorry, the entered username is not available.  Please choose another."
       redirect to '/signup'
     else
        @user = User.create_from_form(params)

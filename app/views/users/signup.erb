@@ -8,6 +8,10 @@
   <input class="btn btn-primary" type="submit" id='submit'>
 </form>
 
+<p id="flash">
 <% if flash[:required_blank] %>
    <%= flash[:required_blank] %>
+<% elsif flash[:username_taken] %>
+      <%= flash[:username_taken] %>
 <% end %>
+</p>

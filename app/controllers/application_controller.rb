@@ -37,8 +37,11 @@ class ApplicationController < Sinatra::Base
        annual_rate = params[:annual_rate]
        conditions = [loan_amount.to_f > 0,
                      loan_term.to_f > 0,
-                     annual_rate.to_f > 1]
-# still need to add in check that input is a number
+                     annual_rate.to_f > 1,
+                     loan_amount.class == Integer || loan_amount.class == Float,
+                     loan_term.class == Integer || loan_term.class == Float,
+                    annual_rate.class == Integer || annual_rate.class == Float
+                   ]
 
       let_pass = true
       conditions.each do |c|
