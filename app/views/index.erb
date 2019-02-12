@@ -14,13 +14,36 @@
     <div class="container-fluid">
       <ul class="nav navbar-nav">
 
-    <li><a href="/signup">Sign Up</a></li>
-    <li><a href="/login"> Sign In </a></li>
+    <li><a id='signup' href="/signup">Sign Up</a></li>
+    <li><a id='login' href="/login"> Sign In </a></li>
 
       </ul>
     </div>
   </nav>
   <h2>Welcome to PaymentCalc</h2>
+  <div id='content'> </div>
   <%end %>
 
 </nav>
+
+<script>
+$(document).ready(function() {
+	$('#login').click(function() {
+    $('#content').load('/login');
+    return false;
+  });
+
+	$('#login').submit(function() {
+    var formData = $(this).serialize();
+    $.post('/login',formData,processData).error('ouch');
+    function processData(data) {
+		  console.log(data==='pass');
+       
+      } // end processData
+    return false;
+  }); // end submit
+			
+}); // end ready
+</script>
+
+ 
